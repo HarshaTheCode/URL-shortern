@@ -1,6 +1,7 @@
 import express from 'express';
-import {  shortenurl, redirecturl } from './URLcontrollers.js';
+import {  shortenurl,  } from './URLcontrollers.js';
 import { welcome,about } from '../../routes/mainroutes.js';
+import { allurls, redirecter } from '../databse/connectdb.js';
 
 export const routes = express.Router();
 
@@ -13,4 +14,5 @@ export const routes = express.Router();
 routes.get('/',welcome)
 routes.get('/about',about)
 routes.post('/api/shorten',shortenurl);
-routes.get("/api/:code",redirecturl)
+routes.get("/api/:code",redirecter)
+routes.get('/allurls',allurls)

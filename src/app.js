@@ -3,6 +3,7 @@ import {routes} from './controllers/URLroutes.js';
 import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import mongoose from 'mongoose';
 
 
 const __filename = fileURLToPath(import.meta.url);

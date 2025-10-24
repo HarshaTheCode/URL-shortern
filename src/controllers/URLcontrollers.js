@@ -1,4 +1,4 @@
-
+import { allurls, connectdb } from "../databse/connectdb.js";
 
 function generateShortcode() {
     /*  Math.randome gives an random number it return an flot number then after 
@@ -25,7 +25,7 @@ let urldatabase={
 
 export function shortenurl(req,res){
     const shortcode=generateShortcode();
-    urldatabase[shortcode]= req.body.originalUrl;
+    connectdb(shortcode,req.body.originalUrl)
     const url=`localhost:5000/api/${shortcode}`;
 
 res.send(url);
@@ -35,11 +35,17 @@ res.send(url);
 // hear in this coed we are storing the actuall web site url in an array with unique code 
 // whene evr the user hit the endpoint with the perfecct mach of the unique code then it will 
 // automaticly redirects to the actull web site by using the link saved 
+/*
+// this funtion was used in the verdion one to store it locally in an arrey 
+
 export function redirecturl (req,res){
-    const {code}=req.params;
+    const {code}=req.params; 
+    // by using the {} to the code we are telling that in side the req.params object go and check for the code value 
+    // and assinge that to this varible with out {} we are assinging the all req.parms object to the code
     const originalurl=urldatabase[code];
+
     console.log(code)
     res.redirect(originalurl);
-
-
 }
+
+*/
